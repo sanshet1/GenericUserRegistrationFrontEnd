@@ -1,0 +1,251 @@
+<div class="row ">
+  <div class="col-md-6 col-md-offset-6 card rounded-0 container py-5" style=" box-shadow: 10px 10px gold;">
+    <form class="form-horizontal" #userForm="ngForm" role="form" (ngSubmit)="onFormSubmit(userForm)">
+
+      <div *ngIf="isError=='Yes'">
+        <div class='alert alert-danger'> {{resposeMessage}}</div>
+      </div>
+      <div *ngIf="isError=='No'">
+        <div class='alert alert-success'> {{resposeMessage}}</div>
+      </div>
+
+      <fieldset>
+
+        <legend>User Details</legend>
+        <hr/>
+
+        <div class="form-group">
+          <label class="col-sm-4 control-label" for="firstName">First Name</label>
+
+          <div class="col-sm-10">
+            <input required minlength="3" maxlength="25" ngModel name="firstName" #firstName="ngModel" id="firstName" type="text" class="form-control">
+          </div>
+          <div class="alert alert-danger col-md-9 col-md-offset-9" *ngIf="firstName.touched && !firstName.valid">
+            <div *ngIf="firstName.errors.required"> First name required</div>
+            <div *ngIf="firstName.errors.minlength">first name should be atleast of 3 characters</div>
+            <div *ngIf="firstName.errors.maxlength">first name can not more then 25 characters</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="middleName" class="col-sm-4 control-label">Middle Name</label>
+
+          <div class="col-sm-10">
+            <input required class="form-control" minlength="1" maxlength="25" ngModel name="middleName" #middleName="ngModel" id="middleName"
+              type="text" class="form-control">
+          </div>
+          <div class="alert alert-danger col-md-9 col-md-offset-9" *ngIf="middleName.touched && !middleName.valid">
+            <div *ngIf="middleName.errors.required"> Middle name required</div>
+            <div *ngIf="middleName.errors.minlength">Middle name should be atleast of 1 characters</div>
+            <div *ngIf="middleName.errors.maxlength">Middle name can not more then 25 characters</div>
+
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="lastName" class="col-sm-4 control-label">Last Name</label>
+          <div class="col-sm-10">
+            <input required class="form-control" minlength="3" maxlength="25" ngModel name="lastName" #lastName="ngModel" id="lastName"
+              type="text" class="form-control">
+          </div>
+          <div class="alert alert-danger col-md-9 col-md-offset-9" *ngIf="lastName.touched && !lastName.valid">
+            <div *ngIf="lastName.errors.required"> Last name required</div>
+            <div *ngIf="lastName.errors.minlength">Last name should be atleast of 3 characters</div>
+            <div *ngIf="lastName.errors.maxlength">Last name can not more then 25 characters</div>
+
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="userID" class="col-sm-4 control-label">User ID</label>
+
+          <div class="col-sm-10">
+            <input required class="form-control" minlength="8" maxlength="20" ngModel name="userID" #userID="ngModel" id="userID" type="text"
+              class="form-control">
+          </div>
+          <div class="alert alert-danger col-md-9 col-md-offset-9" *ngIf="userID.touched && !userID.valid">
+            <div *ngIf="userID.errors.required"> UserID required</div>
+            <div *ngIf="userID.errors.minlength">UserID should be atleast of 8 characters</div>
+            <div *ngIf="userID.errors.maxlength">UserID can not more then 20 characters</div>
+
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password" class="col-sm-4 control-label">Password</label>
+
+          <div class="col-sm-10">
+            <input required class="form-control" minlength="8" maxlength="20" ngModel name="password" #password="ngModel" id="password"
+              type="text" class="form-control">
+          </div>
+          <div class="alert alert-danger col-md-9 col-md-offset-9" *ngIf="password.touched && !password.valid">
+            <div *ngIf="password.errors.required"> Password required</div>
+            <div *ngIf="password.errors.minlength">Password should be atleast of 8 characters</div>
+            <div *ngIf="password.errors.maxlength">Password can not more then 20 characters</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email" class="col-sm-4 control-label">Email</label>
+
+          <div class="col-sm-10">
+            <input required class="form-control" maxlength="30" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" ngModel name="email"
+              #email="ngModel" id="email" type="text" class="form-control">
+          </div>
+          <div class="alert alert-danger col-md-9 col-md-offset-9" *ngIf="email.touched && !email.valid">
+            <div *ngIf="email.errors && email.errors.required">Email is required</div>
+            <div *ngIf="email.errors && email.errors.pattern">Email is invalid </div>
+            <div *ngIf="email.errors && email.errors.maxlength">Email should not be more than 30 characters </div>
+          </div>
+        </div>
+
+        <br/>
+
+        <legend>Residential Address </legend>
+        <hr/>
+
+        <div class="form-group">
+          <label for="addressLine1" class="col-sm-4 control-label">Address Line 1</label>
+
+          <div class="col-sm-10">
+            <input required class="form-control" minlength="3" maxlength="30" ngModel name="addressLine1" #addressLine1="ngModel" id="addressLine1"
+              type="text" class="form-control">
+          </div>
+          <div class="alert alert-danger col-md-9 col-md-offset-9" *ngIf="addressLine1.touched && !addressLine1.valid">
+            <div *ngIf="addressLine1.errors.required"> Address1 required</div>
+            <div *ngIf="addressLine1.errors.minlength">Address1 should be atleast of 3 characters</div>
+            <div *ngIf="addressLine1.errors.maxlength">Address1 can not more then 30 characters</div>
+
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="addressLine2" class="col-sm-4 control-label">Address Line 2</label>
+
+          <div class="col-sm-10">
+            <input class="form-control" ngModel name="addressLine2" #addressLine2="ngModel" id="addressLine2" type="text" class="form-control">
+          </div>
+
+        </div>
+
+
+        <div class="form-group">
+          <label for="street" class="col-sm-4 control-label">Street</label>
+
+          <div class="col-sm-10">
+            <input required class="form-control" minlength="3" maxlength="30" ngModel name="street" #street="ngModel" id="street" type="text"
+              class="form-control">
+          </div>
+          <div class="alert alert-danger col-md-9 col-md-offset-9" *ngIf="street.touched && !street.valid">
+            <div *ngIf="street.errors.required"> Street required</div>
+            <div *ngIf="street.errors.minlength">Street should be atleast of 3 characters</div>
+            <div *ngIf="street.errors.maxlength">Street can not more then 30 characters</div>
+
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="city" class="col-sm-4 control-label">City</label>
+
+          <div class="col-sm-10">
+            <input required minlength="3" maxlength="30" ngModel name="city" #city="ngModel" id="city" type="text" class="form-control">
+          </div>
+          <div class="alert alert-danger col-md-9 col-md-offset-9" *ngIf="city.touched && !city.valid">
+            <div *ngIf="city.errors.required"> City required</div>
+            <div *ngIf="city.errors.minlength">City should be atleast of 3 characters</div>
+            <div *ngIf="city.errors.maxlength">City can not more then 30 characters</div>
+
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="pinCode" class="col-sm-4 control-label">Pincode</label>
+
+          <div class="col-sm-10">
+            <input required class="form-control" pattern="^[1-9]{6}$" ngModel name="pinCode" #pinCode="ngModel" id="pinCode"
+              type="text" class="form-control">
+          </div>
+          <div class="alert alert-danger col-md-9 col-md-offset-9" *ngIf="pinCode.touched && !pinCode.valid">
+            <div *ngIf="pinCode.errors.required"> Pincode required</div>
+            <div *ngIf="pinCode.errors.pattern">Pincode should be 6 digit</div>
+          </div>
+        </div>
+        <legend>Permanent Address </legend>
+        <hr/>
+
+        <div class="form-group">
+          <label for="perAddress1" class="col-sm-4 control-label">Address Line 1</label>
+
+          <div class="col-sm-10">
+            <input required class="form-control" minlength="3" maxlength="30" ngModel name="perAddressLine1" #perAddressLine1="ngModel"
+              id="perAddressLine1" type="text" class="form-control">
+          </div>
+          <div class="alert alert-danger col-md-9 col-md-offset-9" *ngIf="perAddressLine1.touched && !perAddressLine1.valid">
+            <div *ngIf="perAddressLine1.errors.required"> Address Line 1 required</div>
+            <div *ngIf="perAddressLine1.errors.minlength">Address Line 1 should be atleast of 3 characters</div>
+            <div *ngIf="perAddressLine1.errors.maxlength">Address Line 1 can not more then 30 characters</div>
+
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="perAddressLine2" class="col-sm-4 control-label">Address Line 2</label>
+
+          <div class="col-sm-10">
+            <input class="form-control" ngModel name="perAddressLine2" #perAddressLine2="ngModel" id="perAddressLine2" type="text" class="form-control">
+          </div>
+
+        </div>
+
+
+        <div class="form-group">
+          <label for="perStreet" class="col-sm-4 control-label">Street</label>
+
+          <div class="col-sm-10">
+            <input required class="form-control" minlength="3" maxlength="30" ngModel name="perStreet" #perStreet="ngModel" id="perStreet"
+              type="text" class="form-control">
+          </div>
+          <div class="alert alert-danger col-md-9 col-md-offset-9" *ngIf="perStreet.touched && !perStreet.valid">
+            <div *ngIf="perStreet.errors.required"> Street required</div>
+            <div *ngIf="perStreet.errors.minlength">Street should be atleast of 3 characters</div>
+            <div *ngIf="perStreet.errors.maxlength">Street can not more then 30 characters</div>
+
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="perCity" class="col-sm-4 control-label">City</label>
+
+          <div class="col-sm-10">
+            <input required minlength="3" maxlength="30" ngModel name="perCity" #perCity="ngModel" id="perCity" type="text" class="form-control">
+          </div>
+          <div class="alert alert-danger col-md-9 col-md-offset-9" *ngIf="perCity.touched && !perCity.valid">
+            <div *ngIf="perCity.errors.required"> City required</div>
+            <div *ngIf="perCity.errors.minlength">City should be atleast of 3 characters</div>
+            <div *ngIf="perCity.errors.maxlength">City can not more then 30 characters</div>
+
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="perPinCode" class="col-sm-4 control-label">PinCode</label>
+
+          <div class="col-sm-10">
+            <input required class="form-control" pattern="^[1-9]{6}$" ngModel name="perPinCode" #perPinCode="ngModel" id="perPinCode"
+              type="text" class="form-control">
+          </div>
+          <div class="alert alert-danger col-md-9 col-md-offset-9" *ngIf="perPinCode.touched && !perPinCode.valid">
+            <div *ngIf="perPinCode.errors.required"> Pincode required</div>
+            <div *ngIf="perPinCode.errors.pattern">Pincode should be 6 digit</div>
+          </div>
+        </div>
+        <br/>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <div class="pull-right">
+              <button type="button" class="btn btn-default" (click)="cancelEdit()">Cancel</button>
+              <button [disabled]='!userForm.form.valid' type="submit" class="btn btn-primary">Save</button>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+  <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->

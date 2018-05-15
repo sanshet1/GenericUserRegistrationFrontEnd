@@ -1,0 +1,72 @@
+<body>
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="row">
+                    <div class="col-md-6 mx-auto">
+
+                        <!-- form card login -->
+                        <div class="card rounded-0">
+                            <div class="card-header">
+                                <h3 class="mb-0">Login</h3>
+                            </div>
+
+                            <div class="card-body">
+                                <form #loginForm="ngForm" role="form" (ngSubmit)="login(loginForm)" novalidate>
+                                    <div class="alert alert-danger col-sm-11 " *ngIf="isloginSuccess">
+                                        Invalid Username and Password.
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label" for="userName">Username</label>
+
+                                        <div class="col-sm-11">
+                                            <input required minlength="8" maxlength="20" ngModel name="userName" #userName="ngModel" id="userName" type="text" class="form-control">
+                                        </div>
+                                        <div class="alert alert-danger col-sm-11 " *ngIf="userName.touched && !userName.valid">
+                                            <div *ngIf="userName.errors.required"> User name required</div>
+                                            <div *ngIf="userName.errors.minlength">User name should be atleast of 8 characters</div>
+                                            <div *ngIf="userName.errors.maxlength">User name can not more then 20 characters</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label" for="password">Password</label>
+
+                                        <div class="col-sm-11">
+                                            <input required minlength="8" maxlength="20" ngModel name="password" #password="ngModel" id="password" type="password" class="form-control">
+                                        </div>
+                                        <div class="alert alert-danger col-sm-11 " *ngIf="password.touched && !password.valid">
+                                            <div *ngIf="password.errors.required">Password required</div>
+                                            <div *ngIf="password.errors.minlength">Password should be atleast of 8 characters</div>
+                                            <div *ngIf="password.errors.maxlength">Password can not more then 20 characters</div>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <span class="custom-control-description small text-dark">
+                                            <a routerLink="/register" routerLinkActive="active">Register</a>
+
+                                        </span>
+
+                                    </div>
+                                    <button [disabled]='!loginForm.form.valid' type="submit" value="submit" class="btn btn-primary btn-lg float-right" id="btnLogin">Login</button>
+                                </form>
+                            </div>
+                            <!--/card-block-->
+                        </div>
+                        <!-- /form card login -->
+
+                    </div>
+
+
+                </div>
+                <!--/row-->
+
+            </div>
+            <!--/col-->
+        </div>
+        <!--/row-->
+    </div>
+    <!--/container-->
+</body>
